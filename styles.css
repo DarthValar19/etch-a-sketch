@@ -1,0 +1,83 @@
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rosybrown;
+    font-family: Cambria;
+}
+
+body *{
+    margin: 15px;
+}
+
+h1{
+    animation-name: title-anim;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes title-anim {
+    0%{
+        transform: scale(1, 1);
+    }
+    50%{
+        transform: scale(1.75, 1.75);
+    }
+    100%{
+        transform: scale(1, 1);
+    }
+}
+
+.color-picker-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.color-picker-container button{
+    height: 30px;
+    width: 5%;
+    margin: 15px;
+    border-radius: 20px;
+}
+
+#red{
+    background-color: red;
+    outline: none;
+}
+
+#blue{
+    background-color:blue;
+    outline: none;
+}
+
+#green{
+    background-color: green;
+    outline: none;
+}
+
+#rgb-values{
+    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+    outline: none;
+}
+
+
+#parent-div{
+    width: 30vw;
+    height: 60vh;
+    display: grid;
+    margin: 0;
+    border: 1px solid red;
+}
+
+#parent-div div{
+    margin: 0;
+}
+
+#reset, #erase{
+    border-radius: 20px;
+    background-color: rosybrown;
+    outline: none;
+}
