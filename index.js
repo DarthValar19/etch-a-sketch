@@ -1,4 +1,5 @@
 const STANDARD_GRID = 16;
+let actualColor = "blue";
 
 function insertDivs(gridSize){
     let totalDivs = gridSize * gridSize;
@@ -11,22 +12,17 @@ function insertDivs(gridSize){
     parentDiv.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
 }
 
-function drawColor(color = "blue"){
+function drawColor(){
     let parentDiv = document.querySelector("#parent-div");
     let divs = parentDiv.querySelectorAll("div");
     divs.forEach(function(div){
         div.addEventListener("mouseover", function(){
-            div.style.backgroundColor = color;
-        })
-    })
-}
-
-function drawRgb(){
-    let parentDiv = document.querySelector("#parent-div");
-    let divs = parentDiv.querySelectorAll("div");
-    divs.forEach(function(div){
-        div.addEventListener("mouseover", function(){
-            div.style.backgroundColor = randomColor();
+            if (actualColor === "rgb-values"){
+                div.style.backgroundColor = randomColor();
+            }
+            else{
+                div.style.backgroundColor = actualColor;
+            }
         })
     })
 }
@@ -46,7 +42,6 @@ function resetButton(){
         else{
             insertDivs(gridSize);
         }
-        drawColor(); 
     })
 }
 
@@ -65,11 +60,10 @@ function colorPicker(){
         button.addEventListener("click", function(){
             let styles = getComputedStyle(button);
             if (button.getAttribute("id") === "rgb-values"){
-                drawRgb();
+                actualColor = button.getAttribute("id");
             }
             else{
-                console.log(styles.getPropertyValue("background-color"));
-                drawColor(styles.getPropertyValue("background-color"));
+                actualColor = styles.getPropertyValue("background-color");
             }
         })
     })
